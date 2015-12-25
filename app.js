@@ -1,8 +1,12 @@
 var express = require('express');
 var app = express();
+debugger
+
+//This module contains utilities for handling and transforming file paths.
 var path = require('path');
 var mongoose = require("mongoose");
 
+//bodyParser用于解析客户端请求的body中的内容,内部使用JSON编码处理,url编码处理以及对于文件的上传处理.
 var bodyParser = require('body-parser');
 var multer = require('multer');
 var session = require('express-session');
@@ -12,6 +16,8 @@ global.dbHelper = require( './common/dbHelper' );
 global.db = mongoose.connect("mongodb://127.0.0.1:27017/test1");
 
 app.use(session({
+    resave:false,
+    saveUninitialized: true,
     secret:'secret',
     cookie:{
         maxAge:1000*60*30
@@ -49,6 +55,6 @@ app.get('/', function(req, res) {
     res.render('login');
 });
 
-app.listen(3000);
+app.listen(8080);
 
 

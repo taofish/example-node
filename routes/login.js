@@ -1,9 +1,11 @@
 module.exports = function ( app ) {
     app.get('/login',function(req,res){
+        debugger
         res.render('login');
     });
 
     app.post('/login', function (req, res) {
+        debugger
         var User = global.dbHelper.getModel('user'),
             uname = req.body.uname;
         User.findOne({name: uname}, function (error, doc) {
@@ -24,5 +26,4 @@ module.exports = function ( app ) {
             }
         });
     });
-
 }
